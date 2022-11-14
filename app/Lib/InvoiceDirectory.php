@@ -84,7 +84,11 @@ class InvoiceDirectory
         mkdir($directoryPath . $invoiceDirectoryName . '/' . env('INVOICE_SELL_DIRECTORY_NAME'));
     }
 
-    public function archiveDirectory()
+    /**
+     *
+     * @return string path to zip file
+     */
+    public function archiveDirectory(): string
     {
 
         $directoryPath = $this->getDirectoryPath();
@@ -93,20 +97,11 @@ class InvoiceDirectory
         $fullArchivePath = $directoryPath . '/' . $invoiceArchiveName;
         $fullInvoiceDirectoryPath = $directoryPath . '/' . $this->getInvoiceDirectoryName();
 
-        $zip = new ZipArchive();
+        $zipArchive = new ZipArchiveExtend();
+        $zipArchive->zip($fullInvoiceDirectoryPath, $fullArchivePath);
 
-        if ($zip->open($fullArchivePath, ZipArchive::CREATE) === TRUE) {
+        return $fullArchivePath;
 
-            // Store the path into the variable
-            $dir = opendir($fullInvoiceDirectoryPath);
-
-            while ($file = readdir($dir)) {
-                if (is_file($fullInvoiceDirectoryPath . $file)) {
-                    $zip->addFile($fullInvoiceDirectoryPath . $file, $file);
-                }
-            }
-            $zip->close();
-        }
     }
 
 

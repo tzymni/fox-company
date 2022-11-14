@@ -32,8 +32,17 @@ class ArchiveFoldersCommand extends Command
         $invoiceDirectory = new InvoiceDirectory();
 
         if($invoiceDirectory->directoryExists()) {
-            $invoiceDirectory->archiveDirectory();
-            $this->info(sprintf("Successfully created zip file!"));
+            $this->info(sprintf("Directory exists, starting archive to zip..."));
+            $zipPath = $invoiceDirectory->archiveDirectory();
+
+            $zipExists = is_file($zipPath);
+
+            if($zipExists) {
+                $this->info("Successfully created zip file!");
+            } else {
+                $this->error("Something goes wrong with archive data!");
+            }
+
         } else {
             $this->error(sprintf("Didn't find %s directory!!", $invoiceDirectory->getInvoiceDirectoryName()));
         }
