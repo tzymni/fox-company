@@ -20,7 +20,7 @@ class ArchiveFoldersCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Archive invoice directory to zip.';
 
     /**
      * Execute the console command.

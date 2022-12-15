@@ -17,12 +17,14 @@
     ],
     "require": {
         "php": "^8.0",
+        "ext-zip": "*",
         "illuminate/log": "^9.0",
+        "jolicode/jolinotif": "^2.4",
         "laminas/laminas-text": "^2.9",
         "laravel-zero/framework": "^9.2",
         "nunomaduro/laravel-console-menu": "^3.2",
-        "nunomaduro/termwind": "^1.14",
-        "ext-zip": "*"
+        "nunomaduro/laravel-desktop-notifier": "^2.6",
+        "nunomaduro/termwind": "^1.14"
     },
     "require-dev": {
         "laravel/pint": "^1.2",

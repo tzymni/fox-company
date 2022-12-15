@@ -44,7 +44,7 @@ class InvoiceDirectory
     {
         $this->directoryPath = getenv('HOME') . '/' . env('INVOICE_DIRECTORY_PATH');
         if (empty($invoiceDirectoryName)) {
-            $this->invoiceDirectoryName = gmdate("Y.m", strtotime("-1 month")) . 'test';
+            $this->invoiceDirectoryName = gmdate("Y.m", strtotime("-1 month")) ;
         } else {
             $this->invoiceDirectoryName = $invoiceDirectoryName;
         }
